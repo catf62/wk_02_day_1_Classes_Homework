@@ -41,5 +41,29 @@ class TestSportsTeam < MiniTest::Test
     team.add_new_players("Jenny")
     assert_equal(["Steven","Cat", "Jenny"], team.players)
   end
-  
+
+  def test_check_player_name__Cat
+    team = SportsTeam.new("Team 1", ["Steven","Cat"], "Megabus")
+    checked_player = team.check_player_name("Cat")
+    assert_equal("Cat", checked_player)
+  end
+
+  def test_check_player_name__not_found
+    team = SportsTeam.new("Team 1", ["Steven","Cat"], "Megabus")
+    checked_player = team.check_player_name("Boo")
+    assert_nil(nil, checked_player)
+  end
+
+  def test_add_points_for_win__won
+    team = SportsTeam.new("Team 1", ["Steven","Cat"], "Megabus")
+    points = team.add_points_for_win("Win")
+    assert_equal(1, points)
+  end
+
+  def test_add_points_for_win__lost
+    team = SportsTeam.new("Team 1", ["Steven","Cat"], "Megabus")
+    points = team.add_points_for_win("Lose")
+    assert_equal(0, points)
+  end
+
 end
