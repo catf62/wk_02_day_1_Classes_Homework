@@ -41,4 +41,5 @@ class TestSportsTeam < MiniTest::Test
     team.add_new_players("Jenny")
     assert_equal(["Steven","Cat", "Jenny"], team.players)
   end
+  
 end
